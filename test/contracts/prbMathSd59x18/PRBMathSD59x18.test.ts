@@ -1,6 +1,5 @@
 import { unitFixturePRBMathSd59x18 } from "../../shared/fixtures";
 import { shouldBehaveLikeAbs } from "./pure/abs.test";
-import { shouldBehaveLikeAdd } from "./pure/add.test";
 import { shouldBehaveLikeAvg } from "./pure/avg.test";
 import { shouldBehaveLikeCeil } from "./pure/ceil.test";
 import { shouldBehaveLikeDiv } from "./pure/div.test";
@@ -9,7 +8,7 @@ import { shouldBehaveLikeExp2 } from "./pure/exp2.test";
 import { shouldBehaveLikeExp } from "./pure/exp.test";
 import { shouldBehaveLikeFloor } from "./pure/floor.test";
 import { shouldBehaveLikeFrac } from "./pure/frac.test";
-import { shouldBehaveLikeFromInt } from "./pure/fromInt.test";
+import { shouldBehaveLikeFromSD59x18 } from "./pure/fromSD59x18.test";
 import { shouldBehaveLikeGm } from "./pure/gm.test";
 import { shouldBehaveLikeInv } from "./pure/inv.test";
 import { shouldBehaveLikeLn } from "./pure/ln.test";
@@ -19,25 +18,18 @@ import { shouldBehaveLikeMul } from "./pure/mul.test";
 import { shouldBehaveLikePiGetter } from "./pure/pi.test";
 import { shouldBehaveLikePow } from "./pure/pow.test";
 import { shouldBehaveLikePowu } from "./pure/powu.test";
-import { shouldBehaveLikeScaleGetter } from "./pure/scale.test";
 import { shouldBehaveLikeSqrt } from "./pure/sqrt.test";
-import { shouldBehaveLikeSub } from "./pure/sub.test";
-import { shouldBehaveLikeToInt } from "./pure/toInt.test";
+import { shouldBehaveLikeToSD59x18 } from "./pure/toSD59x18.test";
 
 export function unitTestPrbMathSd59x18(): void {
   describe("PRBMathSD59x18", function () {
     beforeEach(async function () {
-      const { prbMathSd59x18, prbMathSd59x18Typed } = await this.loadFixture(unitFixturePRBMathSd59x18);
+      const { prbMathSd59x18 } = await this.loadFixture(unitFixturePRBMathSd59x18);
       this.contracts.prbMathSd59x18 = prbMathSd59x18;
-      this.contracts.prbMathSd59x18Typed = prbMathSd59x18Typed;
     });
 
     describe("abs", function () {
       shouldBehaveLikeAbs();
-    });
-
-    describe("add", function () {
-      shouldBehaveLikeAdd();
     });
 
     describe("avg", function () {
@@ -52,10 +44,6 @@ export function unitTestPrbMathSd59x18(): void {
       shouldBehaveLikeDiv();
     });
 
-    describe("e", function () {
-      shouldBehaveLikeEGetter();
-    });
-
     describe("exp", function () {
       shouldBehaveLikeExp();
     });
@@ -66,10 +54,6 @@ export function unitTestPrbMathSd59x18(): void {
 
     describe("floor", function () {
       shouldBehaveLikeFloor();
-    });
-
-    describe("fromInt", function () {
-      shouldBehaveLikeFromInt();
     });
 
     describe("frac", function () {
@@ -100,10 +84,6 @@ export function unitTestPrbMathSd59x18(): void {
       shouldBehaveLikeMul();
     });
 
-    describe("pi", function () {
-      shouldBehaveLikePiGetter();
-    });
-
     describe("pow", function () {
       shouldBehaveLikePow();
     });
@@ -112,20 +92,24 @@ export function unitTestPrbMathSd59x18(): void {
       shouldBehaveLikePowu();
     });
 
-    describe("scale", function () {
-      shouldBehaveLikeScaleGetter();
-    });
-
     describe("sqrt", function () {
       shouldBehaveLikeSqrt();
     });
 
-    describe("sub", function () {
-      shouldBehaveLikeSub();
+    describe("e", function () {
+      shouldBehaveLikeEGetter();
     });
 
-    describe("toInt", function () {
-      shouldBehaveLikeToInt();
+    describe("pi", function () {
+      shouldBehaveLikePiGetter();
+    });
+
+    describe("fromSD59x18", function () {
+      shouldBehaveLikeFromSD59x18();
+    });
+
+    describe("toSD59x18", function () {
+      shouldBehaveLikeToSD59x18();
     });
   });
 }
